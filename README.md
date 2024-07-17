@@ -1,7 +1,8 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+ddd
 ## Available Scripts
 
 In the project directory, you can run:
@@ -68,3 +69,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+![hooks-images](https://github.com/user-attachments/assets/39266a60-7e6d-4d10-a46b-3d1dc6d3a3e5)
+![licence](https://img.shields.io/github/license/GianfrancoD/useRequest)
+![version](https://img.shields.io/github/commits-since/GianfrancoD/useRequest/0.1.0)
+
+>>>>>>> 47695e8e9407d83b6c899cca23de64efe4778672
