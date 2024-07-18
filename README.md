@@ -11,7 +11,7 @@ Procedimientos del Hook useRequest:
 tiene 3 parametros que puedes llamar que son por defecto:
 - apiCall:
   - Endpoint:
-    - Es para usar los Endpoint de la base de datos `la base de datos usa error.response.data.message para error y response.data.message para Ok, ademas te dara los mensajes que indiques en la base de datos con el nombre message`
+    - Es para usar los Endpoint de la base de datos y se usa `"crear"` en ves de `"/crear"`
   - Id:
     - en este caso el Id es para el uso de parametros y es para detectar el id del array o mas bien de indice de la base de datos `v1/api/${id}`
   - Data:
