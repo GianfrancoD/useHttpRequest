@@ -39,6 +39,7 @@ tiene 3 parametros que puedes llamar que son por defecto:
 -  `apiResponse` = Se encarga de Enviar y Recibir solicitudes de la Base de Dato `message`,
 -  `userFount` = Se encarga de verificar si existe o no `Bool`
 -  `VITE_API_URL` = Si va a crear Variable de Entorno es el nombre por defecto, solo crear `.env` y poner el nombre adecuado
+-  `useRequest` se puede utilizar para `React` como para `Vite`
 
 ## Codigo de Ejemplo:
 
