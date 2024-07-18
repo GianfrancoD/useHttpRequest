@@ -1,6 +1,6 @@
 {
   "name": "userequest-hook",
-  "version": "0.1.0",
+  "version": "v1.0.0-beta.1",
   "private": true,
   "description": "Un hook de React para hacer llamadas a APIs de manera sencilla y eficiente.",
   "keywords": [
