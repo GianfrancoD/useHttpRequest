@@ -1,77 +1,130 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-ddd
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
 ![hooks-images](https://github.com/user-attachments/assets/39266a60-7e6d-4d10-a46b-3d1dc6d3a3e5)
 ![licence](https://img.shields.io/github/license/GianfrancoD/useRequest)
-![version](https://img.shields.io/github/commits-since/GianfrancoD/useRequest/0.1.0)
+![Badge en Desarollo](https://img.shields.io/badge/Status-En%20Desarrollo-green)
 
->>>>>>> 47695e8e9407d83b6c899cca23de64efe4778672
+# Hook useRequest ✍🏻
+
+Procedimientos del Hook useRequest:
+
+`const { apiCall, apiResponse, userFound } = useRequest();`
+
+tiene 3 parametros que puedes llamar que son por defecto:
+- apiCall:
+  - Endpoint:
+    - Es para usar los Endpoint de la base de datos y se usa `"crear"` en ves de `"/crear"`
+  - Id:
+    - en este caso el Id es para el uso de parametros y es para detectar el id del array o mas bien de indice de la base de datos `v1/api/${id}`
+  - Data:
+    - fue creado especialmente para usar lo datos que tenga los valores del formulario o algun otro que se le sea necesario, por ejemplo:
+      - `const [user, setUsers] = useState({nombre: "", apellido: ""})` y se reemplaza `data` por `user`
+  - Method:
+    - es especialmente para asignar metodos HTTP como:
+      - `GET`,
+      - `POST`,
+      - `PUT`,
+      - `DELETE`,
+  - Http:
+    - Fue creado especialmente para reducir codigo y es para usar
+      - `application/json`,
+      - `application/x-www-form-urlencoded`,
+      - `multipart/form-data`,
+      - `text/plain`,
+      - `application/xml`, 
+- Resultado:
+  - `apiCall("create", undefined, target, "post", "application/json");` 👇🏻
+    - `apiCall(endpoint, id, data, method, http);` de esta manera seria el resultado
+    
+### Destacado:
+- `apiCall` = es la funcion para llamar el Hook,
+-  `apiResponse` = Se encarga de Enviar y Recibir solicitudes de la Base de Dato `message`,
+-  `userFount` = Se encarga de verificar si existe o no `Bool`
+-  `VITE_API_URL` = Si va a crear Variable de Entorno es el nombre por defecto, solo crear `.env` y poner el nombre adecuado
+-  `useRequest` se puede utilizar para `React` como para `Vite`
+
+## Codigo de Ejemplo:
+
+`POST`
+```
+const Formulario = () => {
+  const [target, setTarget] = useState({
+    nombre: "",
+    apellido: "",
+  });
+  const { apiCall, apiResponse, userFound } = useRequest();
+
+  const handleSubmit = (target) => {
+    apiCall("create", undefined, target, "post", "application/json");
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <label></label>
+        <input
+          type="text"
+          value={target.nombre}
+          pattern="[a-zA-Z]+"
+          placeholder="nombre"
+          onChange={setTarget}
+          name="nombre"
+          required
+        />
+        <label></label>
+        <input
+          type="text"
+          value={target.apellido}
+          pattern="[a-zA-Z]+"
+          placeholder="apellido"
+          onChange={setTarget}
+          name="apellido"
+          required
+        />
+        <button>Enviar</button>
+      </form>
+
+      {apiResponse ? (
+        <p style={{ color: "green" }}>{apiResponse}</p>
+      ) : userFound ? (
+        <p style={{ color: "red" }}>{userFound}</p>
+      ) : (
+        <p></p>
+      )}
+    </>
+  );
+};
+
+```
+
+`GET`
+```
+const Peticiones = () => {
+  const { apiCall, apiResponse, userFound } = useRequest({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await apiCall(
+        "registrados",
+        undefined,
+        undefined,
+        "get",
+        "application/json"
+      );
+    };
+    fetchData();
+  });
+
+  return (
+    <>
+      {userFound && Array.isArray(apiResponse) ? (
+        apiResponse.map((user) => (
+          <li key={user.id}>
+            {user.nombre} {user.apellido}
+          </li>
+        ))
+      ) : (
+        <p>Loading or error...</p>
+      )}
+    </>
+  );
+};
+```
