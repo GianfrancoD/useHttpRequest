@@ -129,3 +129,26 @@ const Peticiones = () => {
   );
 };
 ```
+
+### Otro ejemplo:
+
+```
+const MyComponent = () => {
+  const { apiCall, apiResponse, userFound } = useRequest();
+
+  const handleSubmit = async () => {
+    await apiCall('users', 1, { name: 'John Doe', email: 'johndoe@example.com' }, 'post', 'application/json');
+    if (userFound) {
+      console.log('Usuario creado con éxito:', apiResponse);
+    } else {
+      console.error('Error al crear el usuario:', apiResponse);
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={handleSubmit}>Crear usuario</button>
+    </div>
+  );
+};
+```
