@@ -1,5 +1,5 @@
 {
-  "name": "useapirequest",
+  "name": "usehttprequest",
   "version": "1.0.0",
   "private": false,
   "description": "Un hook de React para hacer llamadas a APIs de manera sencilla y eficiente.",
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/GianfrancoD/useApiRequest.git"
+    "url": "https://github.com/GianfrancoD/usehttprequest.git"
   },
   "author": {
     "name": "GianfrancoDB"

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const VITE_API_URL = process.env.VITE_API_URL && import.meta.env.VITE_API_URL;
 
-const useApiRequest = () => {
+const useHttpRequest = () => {
   const [apiResponse, setApiResponse] = useState([]);
   const [userFound, setUserFound] = useState(false);
 
@@ -41,9 +41,9 @@ const useApiRequest = () => {
   return { apiCall, apiResponse, userFound };
 };
 
-export default useApiRequest;
+export default useHttpRequest;
 
-useApiRequest.propTypes = {
+useHttpRequest.propTypes = {
   method: PropTypes.oneOf(["get", "post", "put", "delete"]).isRequired,
   http: PropTypes.oneOf([
     "application/json",
@@ -54,7 +54,7 @@ useApiRequest.propTypes = {
   ]).isRequired,
 };
 
-useApiRequest.propTypes = {
+useHttpRequest.propTypes = {
   apiCall: PropTypes.func.isRequired,
   userFound: PropTypes.bool,
   apiResponse: PropTypes.array,
