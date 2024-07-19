@@ -5,6 +5,13 @@
 
 # Hook useRequest ✍🏻
 
+### Caracteristicas
+- `Sencillo y fácil de usar`: useRequest es increíblemente fácil de integrar en tus proyectos de React. Simplemente importa el hook y comienza a utilizarlo en tus componentes.
+- `Soporte para múltiples métodos HTTP`: useRequest admite los métodos HTTP más comunes, como GET, POST, PUT y DELETE, para que puedas realizar solicitudes HTTP de manera sencilla y segura.
+- `Personalizable`: useRequest te permite personalizar la solicitud HTTP según tus necesidades específicas, incluyendo la configuración de headers y el tipo de contenido.
+- `Gestión de errores`: useRequest maneja automáticamente los errores de solicitud HTTP, lo que te permite mostrar mensajes de error personalizados al usuario.
+- `Compatible con React`: useRequest es compatible con todas las versiones de React, desde la 16.8 en adelante.
+
 Procedimientos del Hook useRequest:
 
 `const { apiCall, apiResponse, userFound } = useRequest();`
@@ -129,3 +136,27 @@ const Peticiones = () => {
   );
 };
 ```
+
+### Otro ejemplo:
+
+```
+const MyComponent = () => {
+  const { apiCall, apiResponse, userFound } = useRequest();
+
+  const handleSubmit = async () => {
+    await apiCall('users', 1, { name: 'John Doe', email: 'johndoe@example.com' }, 'post', 'application/json');
+    if (userFound) {
+      console.log('Usuario creado con éxito:', apiResponse);
+    } else {
+      console.error('Error al crear el usuario:', apiResponse);
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={handleSubmit}>Crear usuario</button>
+    </div>
+  );
+};
+```
+⚠️`Nuevas versiones y Actualizaciones Proximamente`⚠️
