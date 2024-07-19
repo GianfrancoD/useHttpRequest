@@ -5,6 +5,11 @@
 
 # Hook useRequest ✍🏻
 
+### Instalacion
+```
+npm i usehttprequest
+```
+
 ### Caracteristicas
 - `Sencillo y fácil de usar`: useRequest es increíblemente fácil de integrar en tus proyectos de React. Simplemente importa el hook y comienza a utilizarlo en tus componentes.
 - `Soporte para múltiples métodos HTTP`: useRequest admite los métodos HTTP más comunes, como GET, POST, PUT y DELETE, para que puedas realizar solicitudes HTTP de manera sencilla y segura.
