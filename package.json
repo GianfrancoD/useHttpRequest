@@ -1,8 +1,9 @@
 {
   "name": "userequest-hook",
-  "version": "v1.0.0-beta.1",
+  "version": "1.0.0",
   "private": true,
   "description": "Un hook de React para hacer llamadas a APIs de manera sencilla y eficiente.",
+  "main": "src/components/useRequest.js",
   "keywords": [
     "react",
     "hook",
@@ -19,6 +20,9 @@
     "name": "GianfrancoDB"
   },
   "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
