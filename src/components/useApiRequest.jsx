@@ -2,9 +2,9 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const VITE_API_URL = import.meta.env.VITE_API_URL;
+const VITE_API_URL = process.env.VITE_API_URL && import.meta.env.VITE_API_URL;
 
-const useRequest = () => {
+const useApiRequest = () => {
   const [apiResponse, setApiResponse] = useState([]);
   const [userFound, setUserFound] = useState(false);
 
@@ -41,9 +41,9 @@ const useRequest = () => {
   return { apiCall, apiResponse, userFound };
 };
 
-export default useRequest;
+export default useApiRequest;
 
-useRequest.propTypes = {
+useApiRequest.propTypes = {
   method: PropTypes.oneOf(["get", "post", "put", "delete"]).isRequired,
   http: PropTypes.oneOf([
     "application/json",
@@ -54,7 +54,7 @@ useRequest.propTypes = {
   ]).isRequired,
 };
 
-useRequest.propTypes = {
+useApiRequest.propTypes = {
   apiCall: PropTypes.func.isRequired,
   userFound: PropTypes.bool,
   apiResponse: PropTypes.array,

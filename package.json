@@ -1,9 +1,9 @@
 {
-  "name": "userequest-hook",
+  "name": "useapirequest",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "Un hook de React para hacer llamadas a APIs de manera sencilla y eficiente.",
-  "main": "src/components/useRequest.js",
+  "main": "src/components/useApiRequest.js",
   "keywords": [
     "react",
     "hook",
@@ -14,15 +14,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/GianfrancoD/useRequest.git"
+    "url": "https://github.com/GianfrancoD/useApiRequest.git"
   },
   "author": {
     "name": "GianfrancoDB"
   },
   "license": "MIT",
-  "peerDependencies": {
-    "react": "^18.0.0"
-  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

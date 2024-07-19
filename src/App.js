@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import useRequest from "./components/useRequest";
+import useApiRequest from "./components/useApiRequest";
 
 function App() {
-  const { apiCall, apiResponse, userFound } = useRequest();
+  const { apiCall, apiResponse, userFound } = useApiRequest();
   const [target, setTarget] = useState({ nombre: "" });
 
   const handleSubmit = (e) => {
