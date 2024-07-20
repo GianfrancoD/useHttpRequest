@@ -3,7 +3,7 @@
 ![Badge en Desarollo](https://img.shields.io/badge/Status-En%20Desarrollo-green)
 ![commit](https://img.shields.io/github/commits-since/GianfrancoD/useRequest/1.0.0)
 
-# Hook useRequest ✍🏻
+# Hook useHttpRequest ✍🏻
 
 ### Instalacion
 ```
