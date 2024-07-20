@@ -4,6 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dt/usehttprequest.svg)](https://www.npmjs.com/package/usehttprequest)
 ![commit](https://img.shields.io/github/commits-since/GianfrancoD/useRequest/1.0.2)
 ![npm](https://img.shields.io/npm/v/usehttprequest)
+![GitHub release](https://img.shields.io/github/release/GianfrancoD/usehttprequest)
 
 
 # Hook useHttpRequest ✍🏻
