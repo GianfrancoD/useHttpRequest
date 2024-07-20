@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useHttpRequest from "./components/useHttpRequest";
+import useHttpRequest from "./useHttpRequest";
 
 function App() {
   const { apiCall, apiResponse, userFound } = useHttpRequest();

@@ -3,18 +3,34 @@
   "version": "1.0.0",
   "private": false,
   "description": "Un hook de React para hacer llamadas a APIs de manera sencilla y eficiente.",
-  "main": "src/components/useApiRequest.js",
+  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./src/index.js"
+    }
+  },
   "keywords": [
     "react",
     "hook",
     "api",
     "axios",
     "http",
-    "request"
+    "request",
+    "react hooks",
+    "custom hooks",
+    "react api",
+    "data fetching",
+    "async/await",
+    "promise",
+    "web development",
+    "frontend development",
+    "performance optimization",
+    "testing"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/GianfrancoD/usehttprequest.git"
+    "url": "https://github.com/GianfrancoD/useHttpRequest.git"
   },
   "author": {
     "name": "GianfrancoDB"

@@ -2,7 +2,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const VITE_API_URL = process.env.VITE_API_URL && import.meta.env.VITE_API_URL;
+const VITE_API_URL = import.meta.env.VITE_API_URL || process.env.VITE_API_URL;
 
 const useHttpRequest = () => {
   const [apiResponse, setApiResponse] = useState([]);
@@ -41,8 +41,6 @@ const useHttpRequest = () => {
   return { apiCall, apiResponse, userFound };
 };
 
-export default useHttpRequest;
-
 useHttpRequest.propTypes = {
   method: PropTypes.oneOf(["get", "post", "put", "delete"]).isRequired,
   http: PropTypes.oneOf([
@@ -62,3 +60,4 @@ useHttpRequest.propTypes = {
   data: PropTypes.string,
   endpoint: PropTypes.string.isRequired,
 };
+export default useHttpRequest;
