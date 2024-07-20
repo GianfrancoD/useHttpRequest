@@ -2,6 +2,7 @@
 ![licence](https://img.shields.io/github/license/GianfrancoD/useRequest)
 ![Badge en Desarollo](https://img.shields.io/badge/Status-En%20Desarrollo-green)
 ![commit](https://img.shields.io/github/commits-since/GianfrancoD/useRequest/1.0.2)
+[![npm downloads](https://img.shields.io/npm/dt/usehttprequest.svg)](https://www.npmjs.com/package/usehttprequest)
 
 # Hook useHttpRequest ✍🏻
 
