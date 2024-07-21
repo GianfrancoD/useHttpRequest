@@ -6,6 +6,7 @@
 ![npm](https://img.shields.io/npm/v/usehttprequest)
 ![GitHub release](https://img.shields.io/github/release/GianfrancoD/usehttprequest)
 
+Actualizacion [CHANGELOG](CHANGELOG.md)
 
 # Hook useHttpRequest ✍🏻
 
