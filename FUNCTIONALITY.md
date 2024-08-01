@@ -18,7 +18,7 @@ const fetchData = useCallback(async () => { // uso del Callback
     );
   }, [apiCall]);
 
-  useEffect(() => { // uso de useEffect para atraer datos con http get
+  useEffect(() => {
     const intervalId = setInterval(() => { // y intervalos de tiempos estimados para controlar su salida
       fetchData();
     }, 10000); // 60,000 milisegundos son 1 min
