@@ -6,7 +6,11 @@
 ![npm](https://img.shields.io/npm/v/usehttprequest)
 ![GitHub release](https://img.shields.io/github/release/GianfrancoD/usehttprequest)
 
-Actualizacion [CHANGELOG](CHANGELOG.md)
+## Actualizaciones & Funcionalidad
+
+Ver los cambios realizados en el Hook [CHANGELOG](./CHANGELOG.md)
+
+- Conoce las mejoras y cambios en la funcionalidad del Hook [FUNCTIONALITY](FUNCTIONALITY.md)
 
 # Hook useHttpRequest ✍🏻
 
