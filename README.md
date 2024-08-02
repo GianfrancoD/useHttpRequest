@@ -69,7 +69,7 @@ tiene 3 parametros que puedes llamar que son por defecto:
 ## Codigo de Ejemplo:
 
 `POST`
-```
+```jsx
 const Formulario = () => {
   const [target, setTarget] = useTargetHandler({
     nombre: "",
@@ -121,7 +121,7 @@ const Formulario = () => {
 ```
 
 `GET`
-```
+```jsx
 const Peticiones = () => {
   const { apiCall, apiResponse, userFound } = useHttpRequest({});
 
@@ -156,7 +156,7 @@ const Peticiones = () => {
 
 ### Otro ejemplo:
 
-```
+```jsx
 const MyComponent = () => {
   const { apiCall, apiResponse, userFound } = useHttpRequest();
 
