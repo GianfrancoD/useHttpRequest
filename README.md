@@ -22,6 +22,12 @@ npm i usehttprequest
 ```
 import { useHttpRequest } from "usehttprequest";
 ```
+
+### Actualización
+```
+npm update usehttprequest
+```
+
 ### Caracteristicas
 - `Sencillo y fácil de usar`: useHttpRequest es increíblemente fácil de integrar en tus proyectos de React. Simplemente importa el hook y comienza a utilizarlo en tus componentes.
 - `Soporte para múltiples métodos HTTP`: useHttpRequest admite los métodos HTTP más comunes, como GET, POST, PUT y DELETE, para que puedas realizar solicitudes HTTP de manera sencilla y segura.
