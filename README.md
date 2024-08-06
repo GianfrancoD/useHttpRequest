@@ -56,67 +56,57 @@ tiene 3 parametros que puedes llamar que son por defecto:
       - `text/plain`,
       - `application/xml`, 
 - Resultado:
-  - `apiCall("create", undefined, target, "post", "application/json");` 👇🏻
-    - `apiCall(endpoint, id, data, method, http);` de esta manera seria el resultado
+  - `apiCall('users', 1, target", 'post', 'application/json', { page: 1, limit: 10 });` 👇🏻
+    - `apiCall(endpoint, id, data, method, http, params);` de esta manera seria el resultado
     
 ### Destacado:
 - `apiCall` = es la funcion para llamar el Hook,
 -  `apiResponse` = Se encarga de Enviar y Recibir solicitudes de la Base de Dato `message`,
 -  `userFount` = Se encarga de verificar si existe o no `Bool`
--  `VITE_API_URL` = Si va a crear Variable de Entorno es el nombre por defecto, solo crear `.env` y poner el nombre adecuado
 -  `useHttpRequest` se puede utilizar para `React` como para `Vite`
+-  `Compatibilidad con Variables de Entorno`: Obtén automáticamente la URL de la API desde variables de entorno, simplificando la configuración en diferentes entornos.
+-  `Parámetros de Consulta`: Ahora puedes enviar parámetros de consulta en tus llamadas a la API, facilitando la filtración y paginación de datos.
 
 ## Codigo de Ejemplo:
 
-`POST`
+`POST` - Nuevo 🆕
 ```jsx
-const Formulario = () => {
-  const [target, setTarget] = useTargetHandler({
-    nombre: "",
-    apellido: "",
-  });
+const UserList = () => {
   const { apiCall, apiResponse, userFound } = useHttpRequest();
 
-  const handleSubmit = (target) => {
-    apiCall("create", undefined, target, "post", "application/json");
+  const fetchUsers = async () => {
+    try {
+      await apiCall('/users', 1, target", 'post', 'application/json', { page: 1, limit: 10 });
+      if (userFound) {
+        console.log('Usuarios encontrados:', apiResponse);
+      }
+    } catch (error) {
+      console.error('Error al hacer la llamada a la API:', error);
+    }
   };
 
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label></label>
-        <input
-          type="text"
-          value={target.nombre}
-          pattern="[a-zA-Z]+"
-          placeholder="nombre"
-          onChange={setTarget}
-          name="nombre"
-          required
-        />
-        <label></label>
-        <input
-          type="text"
-          value={target.apellido}
-          pattern="[a-zA-Z]+"
-          placeholder="apellido"
-          onChange={setTarget}
-          name="apellido"
-          required
-        />
-        <button>Enviar</button>
-      </form>
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-      {apiResponse ? (
-        <p style={{ color: "green" }}>{apiResponse}</p>
-      ) : userFound ? (
-        <p style={{ color: "red" }}>{userFound}</p>
+  return (
+    <div>
+      <h1>Lista de Usuarios</h1>
+      {userFound && apiResponse && Array.isArray(apiResponse) ? (
+        <ul>
+          {apiResponse.map(user => (
+            <li key={user.id}>{user.nombre} {user.apellido}</li>
+          ))}
+        </ul>
       ) : (
-        <p></p>
+        <p>No se encontraron usuarios.</p>
       )}
-    </>
+    </div>
   );
 };
+
+export default UserList;
+
 
 ```
 
