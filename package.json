@@ -1,6 +1,6 @@
 {
   "name": "usehttprequest",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "Un hook de React para hacer llamadas a APIs de manera sencilla y eficiente.",
   "main": "src/index.js",
