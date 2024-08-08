@@ -72,13 +72,14 @@ tiene 3 parametros que puedes llamar que son por defecto:
 -  `useHttpRequest` se puede utilizar para `React` como para `Vite`
 -  `Compatibilidad con Variables de Entorno`: Obtén automáticamente la URL de la API desde variables de entorno, simplificando la configuración en diferentes entornos.
 -  `Parámetros de Consulta`: Ahora puedes enviar parámetros de consulta en tus llamadas a la API, facilitando la filtración y paginación de datos.
+-  `Implementación de Protección CSRF`: Hemos agregado soporte para la protección contra CSRF (Cross-Site Request Forgery). Ahora puedes activar la protección CSRF al utilizar el hook, asegurando que tus solicitudes HTTP sean más seguras. Simplemente pasa enableCSRF=true al usar el hook para habilitar esta funcionalidad. El hook ahora incluye automáticamente el token CSRF en las solicitudes que modifican datos (POST, PUT, DELETE), lo que ayuda a prevenir ataques maliciosos.
 
 ## Codigo de Ejemplo:
 
 `POST` - Nuevo 🆕
 ```jsx
 const UserList = () => {
-  const { apiCall, apiResponse, userFound } = useHttpRequest();
+  const { apiCall, apiResponse, userFound } = useHttpRequest(true); // al cambiarlo de false que es por defecto a true se activara automaticamente la proteccion CSRF
 
   const fetchUsers = async () => {
     try {
