@@ -26,7 +26,7 @@ import { useCallback, useState } from "react";
  *   - `error`: Mensaje de error de la última llamada a la API, si hubo algún error.
  *
  * Ejemplo de uso:
- * const { apiCall, apiResponse, userFound, error } = useHttpRequest();
+ * const { apiCall, apiResponse, userFound, error } = useHttpRequest(true);
  *
  * const fetchUsers = async () => {
  *   try {
@@ -73,9 +73,17 @@ const validate = (endpoint, method, http) => {
     throw new Error("El tipo de contenido en useHttpRequest es Requerido");
 };
 
-const useHttpRequest = () => {
+const useHttpRequest = (enableCSRF = false) => {
   const [apiResponse, setApiResponse] = useState(null);
   const [userFound, setUserFound] = useState(false);
+  const [error, setError] = useState(null);
+
+  const getCsrfToken = () => {
+    return document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("csrfToken="))
+      ?.split("=")[1];
+  };
 
   const apiCall = useCallback(
     async (endpoint, id, data, method, http, params) => {
@@ -88,8 +96,10 @@ const useHttpRequest = () => {
       }
 
       try {
+        const csrfToken = enableCSRF ? getCsrfToken() : null;
         const response = await axios[method](url, data, {
           headers: {
+            "X-CSRF-Token": csrfToken,
             "content-type": http,
             mode: "no-cache",
             Accept: "application/json",
@@ -104,12 +114,13 @@ const useHttpRequest = () => {
         setApiResponse(
           error.response?.data?.message || "Error al crear el usuario ⚠️"
         );
+        setError(error.response?.data?.message);
       }
     },
-    []
+    [enableCSRF]
   );
 
-  return { apiCall, apiResponse, userFound };
+  return { apiCall, apiResponse, userFound, error };
 };
 
 useHttpRequest.propTypes = {
@@ -130,5 +141,6 @@ useHttpRequest.propTypes = {
   id: PropTypes.number,
   data: PropTypes.string,
   endpoint: PropTypes.string.isRequired,
+  enableCSRF: PropTypes.bool,
 };
 export default useHttpRequest;
