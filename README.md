@@ -6,7 +6,7 @@
 ![npm](https://img.shields.io/npm/v/usehttprequest)
 ![GitHub release](https://img.shields.io/github/release/GianfrancoD/usehttprequest)
 
-## Actualizaciones & Funcionalidad
+## Actualizaciones & Funcionalidades
 
 Ver los cambios realizados en el Hook [CHANGELOG](./CHANGELOG.md)
 
@@ -15,20 +15,25 @@ Ver los cambios realizados en el Hook [CHANGELOG](./CHANGELOG.md)
 # Hook useHttpRequest ✍🏻
 
 ### Instalacion
+
 ```
 npm i usehttprequest
 ```
+
 ### Importacion
+
 ```
 import { useHttpRequest } from "usehttprequest";
 ```
 
 ### Actualización
+
 ```
 npm update usehttprequest
 ```
 
 ### Caracteristicas
+
 - `Sencillo y fácil de usar`: useHttpRequest es increíblemente fácil de integrar en tus proyectos de React. Simplemente importa el hook y comienza a utilizarlo en tus componentes.
 - `Soporte para múltiples métodos HTTP`: useHttpRequest admite los métodos HTTP más comunes, como GET, POST, PUT y DELETE, para que puedas realizar solicitudes HTTP de manera sencilla y segura.
 - `Personalizable`: useHttpRequest te permite personalizar la solicitud HTTP según tus necesidades específicas, incluyendo la configuración de headers y el tipo de contenido.
@@ -40,6 +45,7 @@ Procedimientos del Hook useRequest:
 `const { apiCall, apiResponse, userFound } = useHttpRequest();`
 
 tiene 3 parametros que puedes llamar que son por defecto:
+
 - apiCall:
   - Endpoint:
     - Es para usar los Endpoint de la base de datos y se usa `"crear"` en ves de `"/crear"`
@@ -60,23 +66,25 @@ tiene 3 parametros que puedes llamar que son por defecto:
       - `application/x-www-form-urlencoded`,
       - `multipart/form-data`,
       - `text/plain`,
-      - `application/xml`, 
+      - `application/xml`,
 - Resultado:
   - `apiCall('users', 1, target", 'post', 'application/json', { page: 1, limit: 10 });` 👇🏻
     - `apiCall(endpoint, id, data, method, http, params);` de esta manera seria el resultado
-    
+
 ### Destacado:
+
 - `apiCall` = es la funcion para llamar el Hook,
--  `apiResponse` = Se encarga de Enviar y Recibir solicitudes de la Base de Dato `message`,
--  `userFount` = Se encarga de verificar si existe o no `Bool`
--  `useHttpRequest` se puede utilizar para `React` como para `Vite`
--  `Compatibilidad con Variables de Entorno`: Obtén automáticamente la URL de la API desde variables de entorno, simplificando la configuración en diferentes entornos.
--  `Parámetros de Consulta`: Ahora puedes enviar parámetros de consulta en tus llamadas a la API, facilitando la filtración y paginación de datos.
--  `Implementación de Protección CSRF`: Hemos agregado soporte para la protección contra CSRF (Cross-Site Request Forgery). Ahora puedes activar la protección CSRF al utilizar el hook, asegurando que tus solicitudes HTTP sean más seguras. Simplemente pasa enableCSRF=true al usar el hook para habilitar esta funcionalidad. El hook ahora incluye automáticamente el token CSRF en las solicitudes que modifican datos (POST, PUT, DELETE), lo que ayuda a prevenir ataques maliciosos.
+- `apiResponse` = Se encarga de Enviar y Recibir solicitudes de la Base de Dato `message`,
+- `userFount` = Se encarga de verificar si existe o no `Bool`
+- `useHttpRequest` se puede utilizar para `React` como para `Vite`
+- `Compatibilidad con Variables de Entorno`: Obtén automáticamente la URL de la API desde variables de entorno, simplificando la configuración en diferentes entornos.
+- `Parámetros de Consulta`: Ahora puedes enviar parámetros de consulta en tus llamadas a la API, facilitando la filtración y paginación de datos.
+- `Implementación de Protección CSRF`: Hemos agregado soporte para la protección contra CSRF (Cross-Site Request Forgery). Ahora puedes activar la protección CSRF al utilizar el hook, asegurando que tus solicitudes HTTP sean más seguras. Simplemente pasa enableCSRF=true al usar el hook para habilitar esta funcionalidad. El hook ahora incluye automáticamente el token CSRF en las solicitudes que modifican datos (POST, PUT, DELETE), lo que ayuda a prevenir ataques maliciosos.
 
 ## Codigo de Ejemplo:
 
 `POST` - Nuevo 🆕
+
 ```jsx
 const UserList = () => {
   const { apiCall, apiResponse, userFound } = useHttpRequest(true); // al cambiarlo de false que es por defecto a true se activara automaticamente la proteccion CSRF
@@ -113,11 +121,10 @@ const UserList = () => {
 };
 
 export default UserList;
-
-
 ```
 
 `GET`
+
 ```jsx
 const Peticiones = () => {
   const { apiCall, apiResponse, userFound } = useHttpRequest({});
@@ -158,11 +165,17 @@ const MyComponent = () => {
   const { apiCall, apiResponse, userFound } = useHttpRequest();
 
   const handleSubmit = async () => {
-    await apiCall('users', 1, { name: 'John Doe', email: 'johndoe@example.com' }, 'post', 'application/json');
+    await apiCall(
+      "users",
+      1,
+      { name: "John Doe", email: "johndoe@example.com" },
+      "post",
+      "application/json"
+    );
     if (userFound) {
-      console.log('Usuario creado con éxito:', apiResponse);
+      console.log("Usuario creado con éxito:", apiResponse);
     } else {
-      console.error('Error al crear el usuario:', apiResponse);
+      console.error("Error al crear el usuario:", apiResponse);
     }
   };
 
@@ -173,6 +186,7 @@ const MyComponent = () => {
   );
 };
 ```
+
 🚨 `Nuevas versiones y Actualizaciones Proximamente` 🚨
 
 Màs sobre la Funcionalidad del HOOK 👉🏻 [FUNCTIONALITY](FUNCTIONALITY.md) 👈🏻
