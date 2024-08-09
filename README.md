@@ -39,6 +39,9 @@ npm update usehttprequest
 - `Personalizable`: useHttpRequest te permite personalizar la solicitud HTTP según tus necesidades específicas, incluyendo la configuración de headers y el tipo de contenido.
 - `Gestión de errores`: useHttpRequest maneja automáticamente los errores de solicitud HTTP, lo que te permite mostrar mensajes de error personalizados al usuario.
 - `Compatible con React`: useHttpRequest es compatible con todas las versiones de React, desde la 16.8 en adelante.
+- `Compatibilidad con Variables de Entorno`: Obtén automáticamente la URL de la API desde variables de entorno, simplificando la configuración en diferentes entornos.
+- `Parámetros de Consulta`: Ahora puedes enviar parámetros de consulta en tus llamadas a la API, facilitando la filtración y paginación de datos.
+- `Implementación de Protección CSRF`: Hemos agregado soporte para la protección contra CSRF (Cross-Site Request Forgery). Ahora puedes activar la protección CSRF al utilizar el hook, asegurando que tus solicitudes HTTP sean más seguras. Simplemente pasa enableCSRF=true al usar el hook para habilitar esta funcionalidad. El hook ahora incluye automáticamente el token CSRF en las solicitudes que modifican datos (POST, PUT, DELETE), lo que ayuda a prevenir ataques maliciosos.
 
 Procedimientos del Hook useRequest:
 
@@ -77,9 +80,6 @@ tiene 3 parametros que puedes llamar que son por defecto:
 - `apiResponse` = Se encarga de Enviar y Recibir solicitudes de la Base de Dato `message`,
 - `userFount` = Se encarga de verificar si existe o no `Bool`
 - `useHttpRequest` se puede utilizar para `React` como para `Vite`
-- `Compatibilidad con Variables de Entorno`: Obtén automáticamente la URL de la API desde variables de entorno, simplificando la configuración en diferentes entornos.
-- `Parámetros de Consulta`: Ahora puedes enviar parámetros de consulta en tus llamadas a la API, facilitando la filtración y paginación de datos.
-- `Implementación de Protección CSRF`: Hemos agregado soporte para la protección contra CSRF (Cross-Site Request Forgery). Ahora puedes activar la protección CSRF al utilizar el hook, asegurando que tus solicitudes HTTP sean más seguras. Simplemente pasa enableCSRF=true al usar el hook para habilitar esta funcionalidad. El hook ahora incluye automáticamente el token CSRF en las solicitudes que modifican datos (POST, PUT, DELETE), lo que ayuda a prevenir ataques maliciosos.
 
 ## Codigo de Ejemplo:
 
