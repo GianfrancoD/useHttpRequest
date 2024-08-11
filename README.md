@@ -24,11 +24,7 @@ npm i usehttprequest
 
 ```jsx
 JS
-  import { useHttpRequest } from "usehttprequestJS";
-```
-```jsx
-TS
-  import { useHttpRequest } from "usehttprequest/ts";
+  import { useHttpRequest } from "usehttprequest";
 ```
 
 ### Actualización
