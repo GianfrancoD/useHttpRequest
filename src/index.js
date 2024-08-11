@@ -1,2 +1,2 @@
-import useHttpRequest from "./useHttpRequest";
+import useHttpRequest from "./useHttpRequestJS";
 export { useHttpRequest };
