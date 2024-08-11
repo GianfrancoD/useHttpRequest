@@ -22,8 +22,13 @@ npm i usehttprequest
 
 ### Importacion
 
+```jsx
+JS
+  import { useHttpRequest } from "usehttprequestJS";
 ```
-import { useHttpRequest } from "usehttprequest";
+```jsx
+TS
+  import { useHttpRequest } from "usehttprequest/ts";
 ```
 
 ### Actualización
