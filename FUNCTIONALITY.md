@@ -1,3 +1,74 @@
+## Versión 1.0.9: Integración con Sentry y Mejoras en el Estado de Carga
+
+La versión 1.0.9 de `useHttpRequest` introduce mejoras clave que optimizan la experiencia de desarrollo y la interacción del usuario:
+
+1. **Integración Potenciada con Sentry**: 🛠️
+   - Se ha mejorado la captura de excepciones y eventos, permitiendo un monitoreo más efectivo de errores en tiempo real.
+   - Utiliza los nuevos parámetros `SentryWarning`, `SentryError`, `SentryInfo` y `SentryEvent` para registrar advertencias, errores e información relevante, facilitando el proceso de depuración.
+
+2. **Estado de Carga (`isLoading`) Optimizado**: ⏳
+   - El estado de carga ahora proporciona una retroalimentación visual más clara durante las solicitudes.
+   - Los botones y formularios se pueden deshabilitar mientras `isLoading` es `true`, evitando acciones múltiples que podrían causar errores.
+
+3. **Ajuste Dinámico del Retraso Basado en la Conexión**: 🌐
+   - Se ha implementado un ajuste automático del retraso del estado de carga en función de la calidad de la conexión del usuario.
+   - Esto permite que el tiempo de espera se adapte a diferentes tipos de conexión, como `slow-2g`, `2g`, `3g` y `4g`, mejorando la experiencia del usuario al evitar cambios de estado confusos.
+
+### Ejemplo de uso:
+
+```jsx
+import React from 'react';
+import useHttpRequest from './useHttpRequest'; // Asegúrate de que la ruta sea correcta
+
+const MyComponent = () => {
+  const {
+   apiCall,
+   apiResponse,
+   userFound,
+   error,
+   isLoading,
+   SentryWarning,
+   SentryError,
+   SentryInfo,
+   SentryEvent
+  } = useHttpRequest(true); // Habilitar CSRF si es necesario
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    SentryInfo('Iniciando solicitud API'); // Registro de un evento informativo
+
+    try {
+      // Realiza la llamada a la API
+      await apiCall('endpoint', null, { data: 'value' }, 'post', 'application/json');
+      SentryEvent('Solicitud API exitosa'); // Registro de un evento personalizado
+    } catch (err) {
+      SentryError('Error en la solicitud API', err); // Captura el error en Sentry
+    }
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? 'Cargando...' : 'Enviar'}
+        </button>
+      </form>
+      {error && (
+        <p style={{ color: 'red' }}>
+          Error: {error}
+          {SentryWarning('Se ha producido un error en la solicitud.')} {/* Registro de advertencia */}
+        </p>
+      )}
+      {apiResponse && <p>Respuesta: {apiResponse}</p>}
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+----
+
 ## Versión 1.0.4: Soporte para Parámetros de Consulta y Manejo Mejorado de Errores
 
 La versión 1.0.4 de `useHttpRequest` introduce dos mejoras significativas:
