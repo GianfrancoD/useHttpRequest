@@ -6,6 +6,16 @@ Todas las novedades de este proyecto se documentan en este archivo.
 
 ---
 
+## [1.0.9] - 2024-08-13
+### ✨ Mejorado
+- **Integración Potenciada con Sentry**: Se ha mejorado la captura de excepciones y eventos, permitiendo un monitoreo más efectivo de errores en tiempo real. Utiliza los nuevos parámetros `SentryWarning`, `SentryError`, `SentryInfo` y `SentryEvent` para registrar advertencias, errores e información relevante.
+
+- **Estado de Carga (`isLoading`) Optimizado**: Se ha mejorado la retroalimentación visual del estado de carga durante las solicitudes. Los botones y formularios se pueden deshabilitar mientras `isLoading` es `true`, evitando acciones múltiples que podrían causar errores.
+
+- **Ajuste Dinámico del Retraso Basado en la Conexión**: Se ha implementado un ajuste automático del retraso del estado de carga en función de la calidad de la conexión del usuario, adaptándose a diferentes tipos de conexión como `slow-2g`, `2g`, `3g` y `4g`.
+
+---
+
 ## [1.0.4] - 2024-08-06
 ### ✨ Mejorado
 - **Soporte para Parámetros de Consulta**: Se añadió la capacidad de pasar parámetros de consulta al realizar llamadas a la API. Esto permite filtrar y paginar resultados de manera más efectiva.
@@ -60,12 +70,3 @@ Todas las novedades de este proyecto se documentan en este archivo.
 - **Definición de Palabras Clave**: Inclusión de palabras clave relevantes para facilitar la búsqueda y categorización.
 
 - **Configuración del Repositorio**: Establecimiento inicial del repositorio en GitHub, permitiendo la colaboración y el control de versiones.
-
----
-
-Este changelog proporciona una visión clara de las mejoras y correcciones realizadas en cada versión del hook `useHttpRequest`, destacando especialmente las nuevas características introducidas en la versión 1.0.4. Si necesitas más información o ajustes, ¡no dudes en preguntar!
-
-Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/14178594/95f82c1f-c869-42e6-954a-f183fe5fc3dc/paste.txt
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/14178594/a2171bbd-26c4-4d71-839e-a0af4b516357/paste-2.txt
-[3] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/14178594/f8b3c542-a08b-4fa5-be17-3895a2e31440/paste-3.txt
