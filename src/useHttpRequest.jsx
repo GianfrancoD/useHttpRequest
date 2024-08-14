@@ -1,6 +1,8 @@
 import axios from "axios";
 import PropTypes from "prop-types";
 import { useCallback, useState } from "react";
+import log from "loglevel";
+import * as Sentry from "@sentry/react";
 
 const getEnvVar = (varName) =>
   typeof window !== "undefined"
@@ -37,6 +39,7 @@ const useHttpRequest = (enableCSRF = false) => {
   const [apiResponse, setApiResponse] = useState(null);
   const [userFound, setUserFound] = useState(false);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getCsrfToken = () => {
     return document.cookie
@@ -48,14 +51,16 @@ const useHttpRequest = (enableCSRF = false) => {
   const apiCall = useCallback(
     async (endpoint, id, data, method, http, params) => {
       validate(endpoint, method, http);
-      console.log("Llamando a la API:", endpoint, id, data, method, http);
+      log.warn("Llamando a la API:", endpoint, id, data, method, http);
       let url = `${apiUrl}/${endpoint}${id ? `/${id}` : ""}`;
       if (params) {
         const queryParams = new URLSearchParams(params).toString();
         url += `?${queryParams}`;
       }
 
+      let delay = 2000;
       try {
+        setIsLoading(true);
         const csrfToken = enableCSRF ? getCsrfToken() : null;
         const response = await axios[method](url, data, {
           headers: {
@@ -65,22 +70,101 @@ const useHttpRequest = (enableCSRF = false) => {
             Accept: "application/json",
           },
         });
+        clearTimeout(delay);
         console.log("Respuesta de la API:", response.data);
         setApiResponse(response.data.message || response.data);
         setUserFound(true);
       } catch (error) {
-        console.error(error);
+        log.error(error);
+        Sentry.captureException(error);
         setUserFound(true);
         setApiResponse(
           error.response?.data?.message || "Error al crear el usuario ⚠️"
         );
         setError(error.response?.data?.message);
+      } finally {
+        const connectionDelays = [
+          { type: "slow-2g", delay: 4000 },
+          { type: "2g", delay: 3000 },
+          { type: "3g", delay: 2000 },
+          { type: "4g", delay: 1000 },
+          { type: "5g", delay: 500 },
+        ];
+        if (navigator.connection) {
+          const connectionDelay = connectionDelays.find(
+            (delay) => delay.type === navigator.connection.effectiveType
+          );
+          delay = connectionDelay ? connectionDelay.delay : 2000;
+        }
+        setTimeout(() => {
+          setIsLoading(false);
+        }, delay);
       }
     },
     [enableCSRF]
   );
 
-  return { apiCall, apiResponse, userFound, error };
+  const SentryWarning = (message, context = {}) => {
+    if (Sentry.isEnabled()) {
+      Sentry.captureMessage(message, "warning", {
+        extra: context,
+      });
+    } else {
+      log.error("Sentry no está configurado. Mensaje de error:", message);
+    }
+  };
+
+  const SentryError = (message, error, context = {}) => {
+    if (Sentry.isEnabled()) {
+      Sentry.captureMessage(message, "error", {
+        extra: {
+          ...context,
+          errorMessage: error.message,
+        },
+      });
+      Sentry.captureException(error);
+    } else {
+      log.error(
+        "Sentry no está configurado. Mensaje de error:",
+        message,
+        error
+      );
+    }
+  };
+
+  const SentryInfo = (message, context = {}) => {
+    if (Sentry.isEnabled()) {
+      Sentry.captureMessage(message, "info", {
+        extra: context,
+      });
+    } else {
+      console.info("Sentry no está configurado. Mensaje informativo:", message);
+    }
+  };
+
+  const SentryEvent = (eventName, data, level = "info") => {
+    if (Sentry.isEnabled()) {
+      Sentry.captureEvent({
+        message: eventName,
+        level: level,
+        extra: data,
+      });
+    } else {
+      log.error("Sentry no está configurado. Mensaje de error:", eventName);
+    }
+  };
+
+  return {
+    apiCall,
+    apiResponse,
+    userFound,
+    error,
+    isLoading,
+    SentryWarning,
+    SentryError,
+    SentryInfo,
+    SentryEvent,
+  };
 };
 
 useHttpRequest.propTypes = {
