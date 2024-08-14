@@ -1,9 +1,20 @@
-# 📝 Changelog
+# Changelog para `usehttprequest` 🚀
 
-Todas las novedades de este proyecto se documentan en este archivo.
+## [1.0.10] - 2024-08-14
 
-## [Unreleased]
+### Cambios 🛠️
 
+- **Corrección de Bugs**:
+  - **Sentry**: Se solucionó un problema donde los errores no se capturaban correctamente en Sentry. Ahora, los errores se registran adecuadamente, lo que mejora el seguimiento y manejo de excepciones en la aplicación. ✅
+
+### Contribuidores 👥
+
+- [Lista de contribuidores]
+
+### Notas Adicionales 📋
+
+- Asegúrate de que tu DSN de Sentry esté correctamente configurado en tu aplicación para aprovechar las mejoras en la captura de errores. 🔧
+- Se recomienda probar la integración de Sentry después de actualizar a esta versión para verificar que todos los errores se registren como se espera. 🧪
 ---
 
 ## [1.0.9] - 2024-08-13
