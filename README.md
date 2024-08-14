@@ -79,10 +79,11 @@ tiene 3 parametros que puedes llamar que son por defecto:
 
 ### Destacado:
 
-- `apiCall` = es la funcion para llamar el Hook,
-- `apiResponse` = Se encarga de Enviar y Recibir solicitudes de la Base de Dato `message`,
-- `userFount` = Se encarga de verificar si existe o no `Bool`
-- `useHttpRequest` se puede utilizar para `React` como para `Vite`
+- `apiCall` Es la funcion para llamar el Hook,
+- `apiResponse` Se encarga de Enviar y Recibir solicitudes de la Base de Dato `message`,
+- `userFount` Se encarga de verificar si existe o no `Bool`
+- `useHttpRequest` Se puede utilizar para `React` como para `Vite`
+- `useHttpRequest` Ya tiene las dependencias `sentry/tracing`, `sentry/react`, `axios` instaladas.
 
 ## Codigo de Ejemplo:
 
