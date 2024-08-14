@@ -105,53 +105,34 @@ const useHttpRequest = (enableCSRF = false) => {
   );
 
   const SentryWarning = (message, context = {}) => {
-    if (Sentry.isEnabled()) {
-      Sentry.captureMessage(message, "warning", {
-        extra: context,
-      });
-    } else {
-      log.error("Sentry no está configurado. Mensaje de error:", message);
-    }
+    Sentry.captureMessage(message, "warning", {
+      extra: context,
+    });
   };
 
   const SentryError = (message, error, context = {}) => {
-    if (Sentry.isEnabled()) {
-      Sentry.captureMessage(message, "error", {
-        extra: {
-          ...context,
-          errorMessage: error.message,
-        },
-      });
-      Sentry.captureException(error);
-    } else {
-      log.error(
-        "Sentry no está configurado. Mensaje de error:",
-        message,
-        error
-      );
-    }
+    Sentry.captureMessage(message, "error", {
+      extra: {
+        ...context,
+        errorMessage: error?.message || "Error desconocido",
+      },
+    });
+    Sentry.captureException(error);
   };
 
   const SentryInfo = (message, context = {}) => {
-    if (Sentry.isEnabled()) {
-      Sentry.captureMessage(message, "info", {
-        extra: context,
-      });
-    } else {
-      console.info("Sentry no está configurado. Mensaje informativo:", message);
-    }
+    Sentry.captureMessage(message, "info", {
+      extra: context,
+    });
   };
 
   const SentryEvent = (eventName, data, level = "info") => {
-    if (Sentry.isEnabled()) {
-      Sentry.captureEvent({
-        message: eventName,
-        level: level,
-        extra: data,
-      });
-    } else {
-      log.error("Sentry no está configurado. Mensaje de error:", eventName);
-    }
+    Sentry.captureEvent({
+      message: eventName,
+      level: level,
+      extra: data,
+    });
+    log.error("Sentry no está configurado. Mensaje de error:", eventName);
   };
 
   return {
